@@ -114,6 +114,14 @@ mixin ResizeTransformation on BaseCroppableImageController {
             rect.bottom,
           );
         }
+        if (newRect.width < minSpacing || newRect.height < minSpacing) {
+          newRect = Rect.fromLTRB(
+            rect.right - minSpacing,
+            rect.bottom - minSpacing,
+            rect.right,
+            rect.bottom,
+          );
+        }
         break;
       case ResizeDirection.toTopRight:
         newRect = Rect.fromLTRB(
@@ -135,6 +143,14 @@ mixin ResizeTransformation on BaseCroppableImageController {
             rect.left,
             rect.bottom - minSpacing,
             rect.right - scaledOffset.dx,
+            rect.bottom,
+          );
+        }
+        if (newRect.width < minSpacing || newRect.height < minSpacing) {
+          newRect = Rect.fromLTRB(
+            rect.left,
+            rect.bottom - minSpacing,
+            rect.left + minSpacing,
             rect.bottom,
           );
         }
@@ -162,6 +178,14 @@ mixin ResizeTransformation on BaseCroppableImageController {
             rect.top + minSpacing,
           );
         }
+        if (newRect.width < minSpacing || newRect.height < minSpacing) {
+          newRect = Rect.fromLTRB(
+            rect.right - minSpacing,
+            rect.top,
+            rect.right,
+            rect.top + minSpacing,
+          );
+        }
         break;
       case ResizeDirection.toBottomRight:
         newRect = Rect.fromLTRB(
@@ -183,6 +207,14 @@ mixin ResizeTransformation on BaseCroppableImageController {
             rect.left,
             rect.top,
             rect.right - scaledOffset.dx,
+            rect.top + minSpacing,
+          );
+        }
+        if (newRect.width < minSpacing || newRect.height < minSpacing) {
+          newRect = Rect.fromLTRB(
+            rect.left,
+            rect.top,
+            rect.left + minSpacing,
             rect.top + minSpacing,
           );
         }
